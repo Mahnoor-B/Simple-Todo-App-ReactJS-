@@ -1,0 +1,25 @@
+#items-list {
+  background-color: azure;
+  margin-left: 25%;
+  margin-right: 25%;
+  max-width: 50%;
+}
+
+#check {
+  float: right;
+}
+.col-md-8,
+.col-md-4 {
+  padding: 1rem;
+  background-color: rgb(13, 182, 168);
+  border: 2px solid #fff;
+  color: white;
+  text-align: center;
+}
+
+#delete-button {
+  color: red;
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 4px;
+}

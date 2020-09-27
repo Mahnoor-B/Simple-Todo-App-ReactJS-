@@ -1,0 +1,17 @@
+#add-form {
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 20px;
+  max-width: 50%;
+}
+
+#input-text {
+  padding: 4px;
+  width: 80%;
+  height: 20px;
+  border: aquamarine solid 2px;
+}
+
+#button-submit {
+  margin-left: 5%;
+}

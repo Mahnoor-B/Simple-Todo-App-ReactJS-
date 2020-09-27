@@ -2,6 +2,7 @@ import React from "react";
 import todo from "./components/TodoData";
 import Todo from "./components/Todo";
 import AddItem from "./components/AddItem";
+import Header from "./components/Header";
 
 class TodoApp extends React.Component {
   constructor() {
@@ -11,28 +12,18 @@ class TodoApp extends React.Component {
       list: todo,
       value: "",
     };
+
     this.onDelete = this.onDelete.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.onAdd = this.onAdd.bind(this);
   }
 
-  clicked() {
-    console.log("You have clicked me!");
-  }
   onDelete(itemID) {
     console.log(itemID);
-    const items = this.state.list.filter((item) => item.id !== itemID);
+    const items = this.state.list.filter((item) => item !== itemID);
     this.setState({ list: items });
   }
-
-  // onAdd(e) {
-  //   e.preventDefault();
-  //   // var newItem = this.state.list;
-  //   // newItem.push(item);
-  //   // this.setState({ list: newItem });
-  //   this.setState({ textInput: e.target.value });
-  //   console.log("Hello");
-  // }
 
   onAdd = (e) => {
     e.preventDefault();
@@ -41,6 +32,13 @@ class TodoApp extends React.Component {
     });
     console.log(this.state.value);
   };
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const v = this.state.list;
+    v.push(this.state.value);
+    this.setState({ list: v });
+  }
 
   handleChange(id) {
     this.setState((prevState) => {
@@ -58,9 +56,9 @@ class TodoApp extends React.Component {
   }
 
   render() {
-    const todocomponent = this.state.list.map((todo) => (
+    const todocomponent = this.state.list.map((todo, index) => (
       <Todo
-        key={todo.id}
+        key={index}
         todo={todo}
         handleChange={this.handleChange}
         handleDelete={this.onDelete}
@@ -69,11 +67,12 @@ class TodoApp extends React.Component {
 
     return (
       <div>
-        <h1>Welcome to your daily chores!</h1>
+        <Header></Header>
         <h3>{todocomponent}</h3>
         <AddItem
           val={this.state.value}
           refe={this.textInput}
+          handleSubmit={this.handleSubmit}
           handleItem={this.onAdd}
         />
       </div>
